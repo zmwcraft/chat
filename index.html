@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat on WhatsApp</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #484848;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .whatsapp-form {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .whatsapp-input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .whatsapp-button {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .whatsapp-button:hover {
+    background-color: #128c7e;
+  }
+  #mn{
+    background-color: #484848;
+    color: #ccc;
+    border-radius: 10px;
+    align-items:center ;
+    width: auto;
+    max-width: 500px;
+  }
+</style>
+</head>
+<body>
+    <form id="whatsapp-form" class="whatsapp-form" action="https://api.whatsapp.com/send" method="get" target="_blank">
+        <h2>chat with ZAID</h2>
+        <input type="hidden" name="phone" value="+923268722699">
+        <input type="hidden" id="whatsapp-message" name="text" value="">
+        <input type="text" id="name-input" name="name" class="whatsapp-input" placeholder="Your Name">
+        <input type="text" id="country-input" name="country" class="whatsapp-input" placeholder="Project eg = 3D home">
+        <button type="submit" class="whatsapp-button">Chat on WhatsApp</button>
+        <hr>
+        <div id="mn"><span>Messages are end-to-end encrypted. No one outside of This chat, Not even whatsapp can read or listen them .</span>
+        </div>
+    </form>
+
+  <script>
+    document.getElementById('whatsapp-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var name = document.getElementById('name-input').value;
+      var country = document.getElementById('country-input').value;
+      var message = "My name is " + name + ". Let's start working on our project. " + country + " ." ;
+
+      document.getElementById('whatsapp-message').value = message;
+
+      event.target.submit();
+    });
+  </script>
+</body>
+</html>
